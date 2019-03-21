@@ -13,6 +13,7 @@
 		9718B42A2243668900BAC2B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9718B4282243668900BAC2B2 /* Main.storyboard */; };
 		9718B42C2243668A00BAC2B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9718B42B2243668A00BAC2B2 /* Assets.xcassets */; };
 		9718B42F2243668A00BAC2B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9718B42D2243668A00BAC2B2 /* LaunchScreen.storyboard */; };
+		9718B43722436C3C00BAC2B2 /* block.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9718B43622436C3C00BAC2B2 /* block.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9718B42B2243668A00BAC2B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9718B42E2243668A00BAC2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9718B4302243668A00BAC2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9718B43622436C3C00BAC2B2 /* block.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = block.jpeg; path = ../../../Downloads/block.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				9718B4262243668900BAC2B2 /* ViewController.swift */,
 				9718B4282243668900BAC2B2 /* Main.storyboard */,
 				9718B42B2243668A00BAC2B2 /* Assets.xcassets */,
+				9718B43622436C3C00BAC2B2 /* block.jpeg */,
 				9718B42D2243668A00BAC2B2 /* LaunchScreen.storyboard */,
 				9718B4302243668A00BAC2B2 /* Info.plist */,
 			);
@@ -129,6 +132,7 @@
 				9718B42F2243668A00BAC2B2 /* LaunchScreen.storyboard in Resources */,
 				9718B42C2243668A00BAC2B2 /* Assets.xcassets in Resources */,
 				9718B42A2243668900BAC2B2 /* Main.storyboard in Resources */,
+				9718B43722436C3C00BAC2B2 /* block.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

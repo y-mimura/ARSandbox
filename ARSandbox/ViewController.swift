@@ -17,17 +17,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
-        sceneView.delegate = self
+//        // Set the view's delegate
+//        sceneView.delegate = self
+//
+//        // Show statistics such as fps and timing information
+//        sceneView.showsStatistics = true
+//
+//        // Create a new scene
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//
+//        // Set the scene to the view
+//        sceneView.scene = scene
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        // Viewのsceneプロパティに空のシーンを生成する
+        sceneView.scene = SCNScene()
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        // 1辺の長さが20cmの立方体を生成する
+        // scneneViewの中のサイズは、1.0=1mとして現実の世界とリンクしている。
+        let node = SCNNode()
+        node.geometry = SCNBox(width: 0.2, height: 0.2, length: 0.2, chamferRadius: 0)
+        // 表面（マテリアル）を生成する
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "block")
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        // マテリアルをノードに適用
+        node.geometry?.materials = [material]
+        
+        // ノードの位置は、カメラを原点として左右：0m 上下：0m　奥に50cm
+        node.position = SCNVector3(0, 0, -0.5)
+        
+        sceneView.scene.rootNode.addChildNode(node)
     }
     
     override func viewWillAppear(_ animated: Bool) {
