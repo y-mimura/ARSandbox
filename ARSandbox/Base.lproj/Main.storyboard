@@ -33,23 +33,12 @@
                                             <action selector="touchUpOutside:" destination="zcb-m7-O4K" eventType="touchUpOutside" id="6mH-hl-rb3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDe-9i-ZtY">
-                                        <rect key="frame" x="307" y="35" width="43" height="30"/>
-                                        <state key="normal" title="Maker">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="tapToggleMarker:" destination="zcb-m7-O4K" eventType="touchUpInside" id="mQz-w4-iVp"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="PDe-9i-ZtY" firstAttribute="centerY" secondItem="Zbs-2I-w3t" secondAttribute="centerY" id="6QH-Wz-qum"/>
                                     <constraint firstAttribute="height" constant="100" id="Nci-Nn-RMN"/>
                                     <constraint firstItem="AKX-2C-nsa" firstAttribute="centerX" secondItem="Zbs-2I-w3t" secondAttribute="centerX" id="ZPr-dn-4VR"/>
                                     <constraint firstItem="AKX-2C-nsa" firstAttribute="centerY" secondItem="Zbs-2I-w3t" secondAttribute="centerY" id="nWm-0h-HSh"/>
-                                    <constraint firstAttribute="trailing" secondItem="PDe-9i-ZtY" secondAttribute="trailing" constant="25" id="t3S-Sq-mO1"/>
                                 </constraints>
                             </view>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dab-X2-7bn">
@@ -70,29 +59,19 @@
                                     <constraint firstAttribute="trailing" secondItem="ygl-G7-Og5" secondAttribute="trailing" id="QrS-DA-ia3"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Landmark_White" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-OA-Pzd">
-                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="EeZ-Dy-RtX"/>
-                                    <constraint firstAttribute="height" constant="100" id="NU3-la-PBm"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.39165606739999997" green="0.59924448119999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Zbs-2I-w3t" firstAttribute="bottom" secondItem="R5U-SO-wYB" secondAttribute="bottom" id="GaD-jU-NAN"/>
                             <constraint firstItem="Zbs-2I-w3t" firstAttribute="trailing" secondItem="R5U-SO-wYB" secondAttribute="trailing" id="Guf-BV-16T"/>
-                            <constraint firstItem="yn2-OA-Pzd" firstAttribute="centerY" secondItem="hpm-ni-N4T" secondAttribute="centerY" id="RpK-7K-aK1"/>
                             <constraint firstItem="Dab-X2-7bn" firstAttribute="leading" secondItem="R5U-SO-wYB" secondAttribute="leading" id="VZy-KW-013"/>
                             <constraint firstItem="Dab-X2-7bn" firstAttribute="trailing" secondItem="R5U-SO-wYB" secondAttribute="trailing" id="lud-mf-lST"/>
                             <constraint firstItem="Dab-X2-7bn" firstAttribute="top" secondItem="hpm-ni-N4T" secondAttribute="top" id="puA-TL-vZC"/>
                             <constraint firstItem="Zbs-2I-w3t" firstAttribute="leading" secondItem="R5U-SO-wYB" secondAttribute="leading" id="sSQ-B6-k3E"/>
-                            <constraint firstItem="yn2-OA-Pzd" firstAttribute="centerX" secondItem="hpm-ni-N4T" secondAttribute="centerX" id="wt4-8p-XWJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R5U-SO-wYB"/>
                     </view>
                     <connections>
-                        <outlet property="imageMaker" destination="yn2-OA-Pzd" id="gE0-3L-eXp"/>
                         <outlet property="label" destination="ygl-G7-Og5" id="SgJ-Pf-Ar3"/>
                         <outlet property="sceneView" destination="hpm-ni-N4T" id="c6t-4H-qKO"/>
                     </connections>
@@ -102,7 +81,4 @@
             <point key="canvasLocation" x="71.200000000000003" y="145.27736131934034"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Landmark_White" width="172" height="174"/>
-    </resources>
 </document>

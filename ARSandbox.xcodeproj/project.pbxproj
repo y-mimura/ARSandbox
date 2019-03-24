@@ -15,6 +15,7 @@
 		9718B42F2243668A00BAC2B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9718B42D2243668A00BAC2B2 /* LaunchScreen.storyboard */; };
 		9718B43722436C3C00BAC2B2 /* block.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9718B43622436C3C00BAC2B2 /* block.jpeg */; };
 		9760DDC02246161E00DEFF61 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760DDBF2246161E00DEFF61 /* RecordingButton.swift */; };
+		9760DDC422472E3B00DEFF61 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760DDC322472E3B00DEFF61 /* Laser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9718B4302243668A00BAC2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9718B43622436C3C00BAC2B2 /* block.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = block.jpeg; path = ../../../Downloads/block.jpeg; sourceTree = "<group>"; };
 		9760DDBF2246161E00DEFF61 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
+		9760DDC322472E3B00DEFF61 /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				9718B42D2243668A00BAC2B2 /* LaunchScreen.storyboard */,
 				9718B4302243668A00BAC2B2 /* Info.plist */,
 				9760DDBF2246161E00DEFF61 /* RecordingButton.swift */,
+				9760DDC322472E3B00DEFF61 /* Laser.swift */,
 			);
 			path = ARSandbox;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9760DDC02246161E00DEFF61 /* RecordingButton.swift in Sources */,
+				9760DDC422472E3B00DEFF61 /* Laser.swift in Sources */,
 				9718B4272243668900BAC2B2 /* ViewController.swift in Sources */,
 				9718B4232243668900BAC2B2 /* AppDelegate.swift in Sources */,
 			);
