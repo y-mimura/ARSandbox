@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     
     // 画面の中心を取得する
     @objc func update(tm: Timer) {
-        // featurePoint = アンカー（平面）に依存せず座標を取得
+        // featurePoint = ノードを無視して座標を取得
         let hitResults = sceneView.hitTest(sceneView.center, types: [.featurePoint])
         if !hitResults.isEmpty {
             if let hitResult = hitResults.first {
