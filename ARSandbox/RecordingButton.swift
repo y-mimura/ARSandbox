@@ -54,6 +54,7 @@ class RecordingButton: UIButton {
                 self.viewController.present(previewViewController!, animated: true, completion: nil)
             }
         }
+        setAppearance()
     }
     
     func setAppearance() {
