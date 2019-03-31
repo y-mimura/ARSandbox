@@ -13,10 +13,15 @@ import ARKit
 class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var floorSwitch: UISwitch!
+    @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet weak var sizeStepper: UIStepper!
+    
     var recordingButton: RecordingButton!
+    var planeNodes:[PlaneNode] = []
+    var diceSize: CGFloat = 0.15
+    var dices : [Dice] = []
     var timer: Timer!
-    var laser: Laser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +29,38 @@ class ViewController: UIViewController {
         sceneView.delegate = self
         // デバッグ用の情報を表示する
         sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = true
         
         let scene = SCNScene()
         sceneView.scene = scene
         
-        laser = Laser(arScnView: sceneView)
+        addTapGesture()
+        
+        sizeStepper.value = Double(diceSize)
+        dispSize()
         
         // 録画ボタン
         self.recordingButton = RecordingButton(self)
+    }
+    
+    func addTapGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        self.sceneView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func dispSize() {
+        self.sizeLabel.text = String.init(format: "%.2fm", diceSize)
+    }
+    
+    @IBAction func floorSwitchChanged(_ sender: UISwitch) {
+        for planeNode in self.planeNodes {
+            planeNode.isDisplay = sender.isOn
+        }
+    }
+    
+    @IBAction func sizeStepperChanged(_ sender: UIStepper) {
+        self.diceSize = CGFloat(sender.value)
+        dispSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +68,9 @@ class ViewController: UIViewController {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        // 平面の検出を有効化する
+        configuration.planeDetection = .horizontal
+        
         // Run the view's session
         sceneView.session.run(configuration)
         
@@ -52,45 +83,33 @@ class ViewController: UIViewController {
         sceneView.session.pause()
     }
     
-    // Mesure Button TouchDown
-    // 計測開始
-    @IBAction func beginMesure(_ sender: UIButton) {
-        startLaser()
-    }
-    
-    // Measure Button TouchUpInside
-    @IBAction func touchUpInside(_ sender: UIButton) {
-        stopLaser()
-    }
-    
-    // Measure Button TouchUpOutside
-    @IBAction func touchUpOutside(_ sender: UIButton) {
-        stopLaser()
-    }
-    
-    // MARK: - LaserBeam
-    func startLaser() {
-        laser.on()
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        timer.fire()
-    }
-    
-    func stopLaser() {
-        laser.off()
-        timer.invalidate()
-    }
-    
-    // 画面の中心を取得する
-    @objc func update(tm: Timer) {
-        // featurePoint = ノードを無視して座標を取得
-        let hitResults = sceneView.hitTest(sceneView.center, types: [.featurePoint])
-        if !hitResults.isEmpty {
-            if let hitResult = hitResults.first {
-                let center = SCNVector3(hitResult.worldTransform.columns.3.x,
-                                          hitResult.worldTransform.columns.3.y,
-                                          hitResult.worldTransform.columns.3.z)
-                self.laser.update(center: center)
-                label.text = String.init(format: "%.2fm", arguments: [ hitResult.distance ])
+    @objc func tapped(recognizer: UITapGestureRecognizer) {
+        if dices.count > 0 {
+            // すでにサイコロがノードに配置されていたら削除する
+            for dice in dices {
+                dice.removeFromParentNode()
+            }
+            dices.removeAll()
+            return
+        }
+        
+        guard let sceneView = recognizer.view as? ARSCNView else {
+            print("cannot get sceneView from recognizer")
+            return
+        }
+        let touchLocation = recognizer.location(in: sceneView)
+        
+        // タップされた箇所の平面を検出
+        let hitTestResult = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
+        
+        if !hitTestResult.isEmpty {
+            if let hitResult = hitTestResult.first {
+                for _ in [0,1] {
+                    let dice = Dice(size: diceSize, hitResult: hitResult)
+                    dices.append(dice)
+                    sceneView.scene.rootNode.addChildNode(dice)
+                    usleep(100000)
+                }
             }
         }
     }
@@ -98,18 +117,31 @@ class ViewController: UIViewController {
 
 extension ViewController: ARSCNViewDelegate {
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        DispatchQueue.main.async {
+            if !self.floorSwitch.isOn {
+                return
+            }
+            if let planeAnchor = anchor as? ARPlaneAnchor {
+                // 平面を表現するノードを追加する
+                let planeNode = PlaneNode(anchor: planeAnchor)
+                planeNode.isDisplay = self.floorSwitch.isOn
+                
+                node.addChildNode(planeNode)
+                self.planeNodes.append(planeNode)
+            }
+        }
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        DispatchQueue.main.async {
+            if !self.floorSwitch.isOn {
+                return
+            }
+            if let planeAnchor = anchor as? ARPlaneAnchor, let planeNode = node.childNodes[0] as? PlaneNode {
+                // ノードの位置及び形状を修正する
+                planeNode.update(anchor: planeAnchor)
+            }
+        }
     }
 }
