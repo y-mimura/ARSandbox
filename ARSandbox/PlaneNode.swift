@@ -41,8 +41,8 @@ class PlaneNode: SCNNode {
     
     func setPhysicsBody() {
         self.physicsBody?.categoryBitMask = 1
-        self.physicsBody?.friction = 1 // 摩擦 0〜1.0 Default:0.5。0 1.0の場合は全く滑らなくなる
-        self.physicsBody?.restitution = 0// 弾み具合　0:弾まない 3:弾みすぎ
+        self.physicsBody?.friction = 0.5 // 摩擦 0〜1.0 Default:0.5。0 1.0の場合は全く滑らなくなる
+        self.physicsBody?.restitution = 0.5// 弾み具合　0:弾まない 3:弾みすぎ
     }
     
     // 平面の表示/非表示を切り替える

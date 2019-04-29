@@ -43,24 +43,36 @@ class ViewController: UIViewController {
         self.recordingButton = RecordingButton(self)
     }
     
+    /*
+     * TapGestureRecognizerを登録する
+     */
     func addTapGesture() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         self.sceneView.addGestureRecognizer(tapRecognizer)
     }
     
-    func dispSize() {
-        self.sizeLabel.text = String.init(format: "%.2fm", diceSize)
-    }
-    
+    /*
+     * 検出した水平面の表示/非表示切り替え
+     */
     @IBAction func floorSwitchChanged(_ sender: UISwitch) {
         for planeNode in self.planeNodes {
             planeNode.isDisplay = sender.isOn
         }
     }
     
+    /*
+     * サイコロのサイズを調整する
+     */
     @IBAction func sizeStepperChanged(_ sender: UIStepper) {
         self.diceSize = CGFloat(sender.value)
         dispSize()
+    }
+    
+    /*
+     * サイコロのサイズを表示する
+     */
+    func dispSize() {
+        self.sizeLabel.text = String.init(format: "%.2fm", diceSize)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +95,9 @@ class ViewController: UIViewController {
         sceneView.session.pause()
     }
     
+    /*
+     * 画面タップ時の処理
+     */
     @objc func tapped(recognizer: UITapGestureRecognizer) {
         if dices.count > 0 {
             // すでにサイコロがノードに配置されていたら削除する
@@ -90,6 +105,7 @@ class ViewController: UIViewController {
                 dice.removeFromParentNode()
             }
             dices.removeAll()
+            // 削除して終了
             return
         }
         
@@ -97,6 +113,7 @@ class ViewController: UIViewController {
             print("cannot get sceneView from recognizer")
             return
         }
+        // タップされた画面上の場所を抽出
         let touchLocation = recognizer.location(in: sceneView)
         
         // タップされた箇所の平面を検出
@@ -105,6 +122,7 @@ class ViewController: UIViewController {
         if !hitTestResult.isEmpty {
             if let hitResult = hitTestResult.first {
                 for _ in [0,1] {
+                    // サイコロをrootNodeに2つ追加する
                     let dice = Dice(size: diceSize, hitResult: hitResult)
                     dices.append(dice)
                     sceneView.scene.rootNode.addChildNode(dice)
@@ -139,6 +157,11 @@ extension ViewController: ARSCNViewDelegate {
                 return
             }
             if let planeAnchor = anchor as? ARPlaneAnchor, let planeNode = node.childNodes[0] as? PlaneNode {
+                print("planeNode update")
+                
+                print(String(format: "PlaneNode x:%f y:%f z:%f", planeNode.position.x, planeNode.position.y, planeNode.position.z))
+                print(String(format: "PlaneAnchor x:%f y:%f z:%f", planeAnchor.extent.x, planeAnchor.extent.y, planeAnchor.extent.z))
+                
                 // ノードの位置及び形状を修正する
                 planeNode.update(anchor: planeAnchor)
             }

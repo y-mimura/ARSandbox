@@ -13,7 +13,7 @@ class RecordingButton: UIButton {
 
     var isRecording = false
     let height:CGFloat = 50.0
-    let width:CGFloat = 100.0
+    let width:CGFloat = 80.0
     let viewController: UIViewController!
     
     required init?(coder aDecoder: NSCoder) {

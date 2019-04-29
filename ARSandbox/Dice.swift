@@ -50,7 +50,7 @@ class Dice: SCNNode {
                                    hitResult.worldTransform.columns.3.y + Float(size * CGFloat(arc4random() % 3 + 5)),
                                    hitResult.worldTransform.columns.3.z)
         
-        // 出目が変わるようにランダムに回転させる
+        // 出目が変わるように、初期表示はランダムに回転させる
         self.rotation = SCNVector4(1, 1, 1, Double(arc4random() % 10) * Double.pi)
     }
     
