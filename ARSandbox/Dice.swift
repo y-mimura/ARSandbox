@@ -19,7 +19,7 @@ class Dice: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // サイズと
+    // サイコロを落とす位置とサイズを決める
     init(size: CGFloat, hitResult: ARHitTestResult) {
         super.init()
         
