@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var planeNodes:[PlaneNode] = []
     var diceSize: CGFloat = 0.15
     var dices : [Dice] = []
+    var arObject: ARObject? = nil
     var timer: Timer!
     
     override func viewDidLoad() {
@@ -78,6 +79,9 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // navigationbar非表示
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         // 平面の検出を有効化する
@@ -91,6 +95,9 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // navigationbar表示
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         // Pause the view's session
         sceneView.session.pause()
     }

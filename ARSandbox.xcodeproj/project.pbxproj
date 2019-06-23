@@ -15,6 +15,10 @@
 		9725F35A22507A380064B2BD /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725F35922507A380064B2BD /* Dice.swift */; };
 		9725F35C22507FF90064B2BD /* PlaneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725F35B22507FF90064B2BD /* PlaneNode.swift */; };
 		9760DDC02246161E00DEFF61 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760DDBF2246161E00DEFF61 /* RecordingButton.swift */; };
+		97BCE71D22BDF33100AD0F12 /* ARObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BCE71C22BDF33100AD0F12 /* ARObject.swift */; };
+		97BCE71F22BDF97300AD0F12 /* SetSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BCE71E22BDF97300AD0F12 /* SetSizeViewController.swift */; };
+		97BCE72322BDFDB800AD0F12 /* UserDefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BCE72222BDFDB800AD0F12 /* UserDefaultsUtil.swift */; };
+		97BCE72522BF1C8800AD0F12 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BCE72422BF1C8800AD0F12 /* KeyboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		9725F35922507A380064B2BD /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		9725F35B22507FF90064B2BD /* PlaneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNode.swift; sourceTree = "<group>"; };
 		9760DDBF2246161E00DEFF61 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
+		97BCE71C22BDF33100AD0F12 /* ARObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObject.swift; sourceTree = "<group>"; };
+		97BCE71E22BDF97300AD0F12 /* SetSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSizeViewController.swift; sourceTree = "<group>"; };
+		97BCE72222BDFDB800AD0F12 /* UserDefaultsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtil.swift; sourceTree = "<group>"; };
+		97BCE72422BF1C8800AD0F12 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +68,9 @@
 		9718B4212243668900BAC2B2 /* ARSandbox */ = {
 			isa = PBXGroup;
 			children = (
+				97BCE72122BDFDA100AD0F12 /* Util */,
+				97BCE72022BDF97600AD0F12 /* ViewController */,
 				9718B4222243668900BAC2B2 /* AppDelegate.swift */,
-				9718B4262243668900BAC2B2 /* ViewController.swift */,
 				9718B4282243668900BAC2B2 /* Main.storyboard */,
 				9718B42B2243668A00BAC2B2 /* Assets.xcassets */,
 				9718B42D2243668A00BAC2B2 /* LaunchScreen.storyboard */,
@@ -69,8 +78,35 @@
 				9760DDBF2246161E00DEFF61 /* RecordingButton.swift */,
 				9725F35922507A380064B2BD /* Dice.swift */,
 				9725F35B22507FF90064B2BD /* PlaneNode.swift */,
+				97BCE71C22BDF33100AD0F12 /* ARObject.swift */,
 			);
 			path = ARSandbox;
+			sourceTree = "<group>";
+		};
+		97BCE72022BDF97600AD0F12 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				97BCE72622BF1E3F00AD0F12 /* Util */,
+				9718B4262243668900BAC2B2 /* ViewController.swift */,
+				97BCE71E22BDF97300AD0F12 /* SetSizeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		97BCE72122BDFDA100AD0F12 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				97BCE72222BDFDB800AD0F12 /* UserDefaultsUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		97BCE72622BF1E3F00AD0F12 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				97BCE72422BF1C8800AD0F12 /* KeyboardViewController.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,10 +182,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9760DDC02246161E00DEFF61 /* RecordingButton.swift in Sources */,
+				97BCE71D22BDF33100AD0F12 /* ARObject.swift in Sources */,
 				9718B4272243668900BAC2B2 /* ViewController.swift in Sources */,
 				9725F35A22507A380064B2BD /* Dice.swift in Sources */,
+				97BCE72522BF1C8800AD0F12 /* KeyboardViewController.swift in Sources */,
 				9718B4232243668900BAC2B2 /* AppDelegate.swift in Sources */,
 				9725F35C22507FF90064B2BD /* PlaneNode.swift in Sources */,
+				97BCE72322BDFDB800AD0F12 /* UserDefaultsUtil.swift in Sources */,
+				97BCE71F22BDF97300AD0F12 /* SetSizeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
